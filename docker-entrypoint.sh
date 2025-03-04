@@ -13,7 +13,7 @@ rm /tmp/drop_system.sql
 for i in /tmp/*.sql
 do
     echo "Importing: $i"
-    mysql eq < "$i"
+    awk '/enable the sandbox mode/ {next} {print}' "$i" | mysql eq
 done
 
 exec mysql2sqlite -K -d eq -u root --mysql-password eq2sqlite -f "/tmp/out/$FILENAME.db"
