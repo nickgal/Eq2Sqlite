@@ -4,9 +4,10 @@ set -e
 mariadbd --user=root &
 /wait && mariadb -e 'create database eq; set password = password("eq2sqlite");'
 
-FILE="$1"
+REPO="$1"
+FILE="$2"
 FILENAME="${FILE%%.*}"
-wget "https://github.com/SecretsOTheP/EQMacEmu/raw/main/utils/sql/database_full/$FILE" -O /tmp/db.tar.gz
+wget "https://github.com/$REPO/raw/main/utils/sql/database_full/$FILE" -O /tmp/db.tar.gz
 tar -xvzf /tmp/db.tar.gz -C /tmp
 rm /tmp/drop_system.sql
 
