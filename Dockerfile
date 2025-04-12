@@ -10,7 +10,7 @@ RUN apt update && apt -y install mariadb-server
 RUN mkdir -p /run/mysqld
 RUN mkdir /tmp/out
 
-RUN pip install mysql-to-sqlite3
+RUN pip install git+https://github.com/nickgal/mysql-to-sqlite3.git
 
 ADD docker-entrypoint.sh /docker-entrypoint.sh
 
